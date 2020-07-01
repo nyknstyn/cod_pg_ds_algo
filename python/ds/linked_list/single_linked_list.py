@@ -34,6 +34,32 @@ class SingleLinkedList:
         self.head = node
         print("Node inserted")
 
+    def reverse(self):
+        if not self.head:
+            print("Empty list")
+            return
+        node = self.head
+        prev_node = None
+        while node:
+            next_node = node.link
+            node.link = prev_node
+            prev_node = node
+            node = next_node
+        self.head = prev_node
+
+    def reverse_using_recursion(self, current_node: Node, prev_node: Node = None):
+        """
+
+        :param current_node: Head of List
+        :param prev_node: For internal purpose
+        :return:
+        """
+        if current_node:
+            self.reverse_using_recursion(current_node.link, current_node)
+            current_node.link = prev_node
+        else:
+            self.head = prev_node
+
     def length(self) -> int:
         """
         Length of Linked List
@@ -46,20 +72,65 @@ class SingleLinkedList:
             node = node.link
         return length
 
+    def delete_at_position(self, position: int):
+        """
+        Delete node at given position
+        :param position:
+        :return:
+        """
+        if not self.head:
+            print("Empty List")
+            return
+        if position < 1:
+            print("Invalid position")
+            return
+        node = self.head
+        if position == 1:
+            self.head = node.link
+            return
+        node_count = 1
+        prev_node = node
+        node = node.link
+        while node:
+            node_count += 1
+            if node_count == position:
+                prev_node.link = node.link
+                break
+            prev_node = node
+            node = node.link
+        return
+
     def insert_at_position(self, data: int, position: int):
         """
+        Inserts node at a position
         :param data:
         :param position:
         :return:
         """
         node = self.head
-        node_count = 0
-        while (node.link.link is not None) & (node_count != position):
-            node = node.link
+        node_count = 1
+        if position < 1:
+            print("Invalid position")
+            return
+        if position == 1:
+            new_node = Node(data)
+            new_node.link = self.head
+            self.head = new_node
+            return
+        if not self.head:
+            print("List is empty")
+            return
+        prev_node = node
+        node = node.link
+        while node:
             node_count += 1
-        new_node = Node(data)
-        new_node.link = node.link
-        node.link = new_node
+            if node_count == position:
+                new_node = Node(data)
+                new_node.link = prev_node.link
+                prev_node.link = new_node
+                break
+            prev_node = node
+            node = node.link
 
     def append(self, data):
         """
