@@ -21,7 +21,6 @@ class SingleLinkedList:
         while node:
             print(" ==> {}".format(node.data), end="")
             node = node.link
-        print("")
 
     def insert_node(self, data: int):
         """
@@ -100,6 +99,26 @@ class SingleLinkedList:
             node = node.link
         return
 
+    def element_at_position(self, position: int):
+        """
+        Fetch Element at a given position
+        :param position:
+        :return:
+        """
+        if not self.head:
+            raise Exception("List is empty")
+        if position < 1:
+            raise Exception("Invalid position")
+        node = self.head
+        node_count = 1
+        while node:
+            if position == node_count:
+                return node.data
+            position += 1
+            node = node.link
+        raise Exception("Invalid position")
+
+
     def insert_at_position(self, data: int, position: int):
         """
         Inserts node at a position
@@ -131,6 +150,9 @@ class SingleLinkedList:
                 break
             prev_node = node
             node = node.link
+
+
+
 
     def append(self, data):
         """
