@@ -118,7 +118,6 @@ class SingleLinkedList:
             node = node.link
         raise Exception("Invalid position")
 
-
     def insert_at_position(self, data: int, position: int):
         """
         Inserts node at a position
@@ -150,8 +149,6 @@ class SingleLinkedList:
                 break
             prev_node = node
             node = node.link
-
-
 
     def append(self, data):
         """
