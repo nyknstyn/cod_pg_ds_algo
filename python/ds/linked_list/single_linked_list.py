@@ -153,7 +153,6 @@ class SingleLinkedList:
 
 
 
-
     def append(self, data):
         """
         Inserts data at the end of the list
