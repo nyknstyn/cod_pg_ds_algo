@@ -1,4 +1,4 @@
-from ds.tree.tree import Tree
+from ds.tree.binary.tree import Tree
 
 
 class TreeBase:

@@ -1,5 +1,5 @@
-from ds.tree.tree_base import TreeBase
-from ds.tree.tree import Node
+from ds.tree.binary.program.tree_base import TreeBase
+from ds.tree.binary.tree import Node
 
 
 class CountNodes(TreeBase):

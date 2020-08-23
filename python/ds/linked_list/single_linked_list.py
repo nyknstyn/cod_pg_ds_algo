@@ -34,6 +34,10 @@ class SingleLinkedList:
         print("Node inserted")
 
     def reverse(self):
+        """
+        1->2->3->4->5
+        :return:
+        """
         if not self.head:
             print("Empty list")
             return
@@ -48,7 +52,6 @@ class SingleLinkedList:
 
     def reverse_using_recursion(self, current_node: Node, prev_node: Node = None):
         """
-
         :param current_node: Head of List
         :param prev_node: For internal purpose
         :return:
@@ -164,24 +167,19 @@ class SingleLinkedList:
             node = node.link
         node.link = Node(data)
 
+    def search(self, data):
+        """
+        :param data:
+        :return:
+        """
+        if not self.head:
+            raise Exception("Empty List")
+        node = self.head
+        while node:
+            if node.data == data:
+                return True
+            node = node.link
+        return False
 
-if __name__ == "__main__":
-    my_list = SingleLinkedList()
-    my_list.insert_node(2)
-    my_list.insert_node(3)
-    my_list.insert_node(4)
-    my_list.insert_node(5)
-
-    my_list.print_list()
-
-    my_list.append(9)
-
-    my_list.print_list()
-
-    my_list2 = SingleLinkedList()
-    my_list2.append(8)
-    my_list2.print_list()
-
-    my_list2.insert_at_position(9, -1)
-
-    my_list2.print_list()
+    def is_empty(self):
+        return self.head is None
