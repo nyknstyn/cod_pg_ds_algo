@@ -37,4 +37,3 @@ class Stack:
         while top_temp != Stack.EMPTY_STACK_TOP:
             print(self.elements[top_temp])
             top_temp -= 1
-
